@@ -1,0 +1,28 @@
+<template>
+  <view>
+    <movable-area>
+      <movable-view bindchange={{touch}}>我</movable-view>
+    </movable-area>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+import { http } from '../libs/http'
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '淘券券首页'
+  }
+  data = {
+    name: '淘券券'
+  }
+  onLoad () {
+    http('http://1.119.144.174:4443/index/cats', 'get').then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+}
+</script>
+<style lang="less">
+</style>
